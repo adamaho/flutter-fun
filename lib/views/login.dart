@@ -13,6 +13,13 @@ class _LoginState extends State<LoginView> {
   String _email = '';
   String _password = '';
 
+  bool validEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    return (!regex.hasMatch(value)) ? false : true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,19 +40,23 @@ class _LoginState extends State<LoginView> {
                   FormInput(
                     hintText: "Email",
                     validator: (value) {
+                      if (!validEmail(value)) {
+                        return "Are you sure that is your email?";
+                      }
                       if (value.isEmpty) {
-                        return 'We need your email so we know who you are.';
+                        return "We need your email to know who you are.";
                       }
                       return null;
                     },
                     onSaved: (value) {
                       setState(() {
-                        _password = value;
+                        _email = value;
                       });
                     },
                   ),
                   FormInput(
                     hintText: "Password",
+                    obscureText: true,
                     validator: (value) {
                       if (value.isEmpty) {
                         return "Can't come back without your password";

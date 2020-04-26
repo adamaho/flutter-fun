@@ -5,10 +5,12 @@ class FormInput extends StatelessWidget {
     @required this.hintText,
     @required this.onSaved,
     @required this.validator,
+    this.obscureText = false,
   });
 
   final String hintText;
   final FormFieldSetter<String> onSaved;
+  final bool obscureText;
   final FormFieldValidator<String> validator;
 
   @override
@@ -16,6 +18,7 @@ class FormInput extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 20),
       child: TextFormField(
+        obscureText: this.obscureText,
         cursorColor: Colors.white,
         style: TextStyle(
           color: Colors.white,
