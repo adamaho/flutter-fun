@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.interTextTheme(
           Theme.of(context).textTheme,
         ),
-        scaffoldBackgroundColor: Color.fromRGBO(45, 45, 45, 1),
+        scaffoldBackgroundColor: Color.fromRGBO(25, 25, 25, 1),
       ),
       home: StartView(),
     );

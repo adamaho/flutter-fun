@@ -3,15 +3,15 @@ import 'package:flutter/cupertino.dart';
 import '../widgets/common.dart';
 
 class LoginView extends StatefulWidget {
-  String _email;
-  String _password;
-
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<LoginView> {
   final _formKey = GlobalKey<FormState>();
+
+  String _email = '';
+  String _password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -30,33 +30,32 @@ class _LoginState extends State<LoginView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      hintText: 'Email',
-                    ),
+                  FormInput(
+                    hintText: "Email",
                     validator: (value) {
                       if (value.isEmpty) {
-                        return 'Please enter some text';
+                        return 'We need your email so we know who you are.';
                       }
                       return null;
                     },
                     onSaved: (value) {
-                      print(value);
+                      setState(() {
+                        _password = value;
+                      });
                     },
                   ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                        hintText: 'Password',
-                        fillColor: Colors.white,
-                        focusColor: Colors.white),
+                  FormInput(
+                    hintText: "Password",
                     validator: (value) {
                       if (value.isEmpty) {
-                        return 'Please enter some text';
+                        return "Can't come back without your password";
                       }
                       return null;
                     },
                     onSaved: (value) {
-                      print(value);
+                      setState(() {
+                        _password = value;
+                      });
                     },
                   ),
                 ],
@@ -65,10 +64,11 @@ class _LoginState extends State<LoginView> {
             Button(
               text: "Login",
               onPressed: () {
-                // Validate will return true if the form is valid, or false if
-                // the form is invalid.
                 if (_formKey.currentState.validate()) {
                   _formKey.currentState.save();
+
+                  print(_email);
+                  print(_password);
                 }
               },
             )
