@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../widgets/common.dart';
+
+import './form.dart';
+import '../../utils/validate.dart';
+import '../../widgets/common.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -12,13 +15,6 @@ class _LoginState extends State<LoginView> {
 
   String _email = '';
   String _password = '';
-
-  bool validEmail(String value) {
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
-    return (!regex.hasMatch(value)) ? false : true;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +74,11 @@ class _LoginState extends State<LoginView> {
                 if (_formKey.currentState.validate()) {
                   _formKey.currentState.save();
 
-                  print(_email);
-                  print(_password);
+                  var foo = new LoginForm(_email, _password);
+                  
+
+                  foo.saveForm();
+                  print(foo.toJson());
                 }
               },
             )
