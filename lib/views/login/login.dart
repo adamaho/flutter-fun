@@ -78,7 +78,6 @@ class _LoginState extends State<LoginView> {
                   
 
                   foo.saveForm();
-                  print(foo.toJson());
                 }
               },
             )
