@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../common.dart';
-import '../../widgets/common.dart';
+import 'common.dart';
+import '../widgets/common.dart';
 
-class LoginView extends StatelessWidget {
+class KeyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,16 +14,8 @@ class LoginView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TitleWithDescription(
-              title: "Welcome Back",
-              description: "What is your email and password?",
-            ),
-            LoginSignupForm(
-              buttonSubmitText: "Login",
-              onSubmit: (form) {
-                var json = form.toJson();
-
-                print(json);
-              },
+              title: "Let's get started",
+              description: "Do you have access?",
             ),
           ],
         ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'login/login.dart';
-import 'signup.dart';
+import 'login.dart';
+import 'key.dart';
 import '../widgets/common.dart';
 
 class StartView extends StatelessWidget {
@@ -35,7 +35,7 @@ class StartView extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  CupertinoPageRoute(builder: (context) => SignupView()),
+                  CupertinoPageRoute(builder: (context) => KeyView()),
                 );
               },
             )
