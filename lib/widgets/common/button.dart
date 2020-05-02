@@ -17,7 +17,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 42,
+      height: 36,
       child: FlatButton(
         child: Text(
           this.text,

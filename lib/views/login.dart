@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -20,7 +22,7 @@ class LoginView extends StatelessWidget {
             LoginSignupForm(
               buttonSubmitText: "Login",
               onSubmit: (form) {
-                var json = form.toJson();
+                var json = jsonEncode(form);
 
                 print(json);
               },

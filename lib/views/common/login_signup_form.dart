@@ -9,26 +9,14 @@ class LoginSignupForm extends StatefulWidget {
   final String buttonSubmitText;
   final void Function(LoginForm form) onSubmit;
 
-  LoginSignupForm({
-    @required this.buttonSubmitText,
-    @required this.onSubmit
-  });
+  LoginSignupForm({@required this.buttonSubmitText, @required this.onSubmit});
 
   @override
-  _LoginState createState() =>
-      _LoginState(buttonSubmitText: this.buttonSubmitText, onSubmit: this.onSubmit);
+  _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<LoginSignupForm> {
   final _formKey = GlobalKey<FormState>();
-
-  _LoginState({
-    @required this.buttonSubmitText,
-    @required this.onSubmit
-  });
-
-  final String buttonSubmitText;
-  final void Function(LoginForm form) onSubmit;
 
   String _email = '';
   String _password = '';
@@ -80,14 +68,14 @@ class _LoginState extends State<LoginSignupForm> {
           ),
         ),
         Button(
-          text: this.buttonSubmitText,
+          text: widget.buttonSubmitText,
           onPressed: () {
             if (_formKey.currentState.validate()) {
               _formKey.currentState.save();
 
               var form = new LoginForm(_email, _password);
 
-              this.onSubmit(form);
+              widget.onSubmit(form);
             }
           },
         )
