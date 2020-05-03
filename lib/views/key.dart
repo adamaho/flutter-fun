@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import './signup.dart';
 import '../widgets/common.dart';
 
 class CheckKey {
@@ -92,9 +93,20 @@ class _KeyViewState extends State<KeyView> {
 
                           form.checkKey().then((result) {
                             if (result) {
-                              print("move to next view");
+                              setState(() {
+                                _keyError = null;
+                              });
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (context) => SignupView(),
+                                ),
+                              );
                             } else {
-                              print("set error state");
+                              setState(() {
+                                _keyError =
+                                    "Your key is invalid or already taken.";
+                              });
                             }
                           });
                         }
