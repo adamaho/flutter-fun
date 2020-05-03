@@ -13,8 +13,8 @@ class CheckKey {
   CheckKey(this.key);
 
   Map<String, dynamic> toJson() => {
-        'key': key,
-      };
+    'key': key,
+  };
 
   Future<bool> checkKey() async {
     try {
