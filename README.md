@@ -1,1 +1,3 @@
-# Mobile App for Tallii
+# Flutter Fun
+
+Just a repo to play around in with flutter.
