@@ -1,1 +1,1 @@
-# Mobile Client for Alku
+# Mobile App for Tallii
